@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+double main() {
+	double invitations, largePackage, smallPackage, largePackage2, smallPackage2, lgresult, smresult, cost1, cost2, total;
+	lgresult = 0;
+	smresult = 0;
+
+	printf("Please input an amount of invitations under 10000:\n");
+	scanf_s("%lf", &invitations);
+	printf("You entered: %lf\n", invitations);
+	//This will get the amount of invitations 
+
+	printf("Please input a cost for a large package less than 500:\n");
+	scanf_s("%lf", &largePackage);
+	printf("You entered: %lf\n", largePackage);
+	printf("Please input a cost for a second large package less than 500:\n");
+	scanf_s("%lf", &largePackage2);
+	printf("You entered: %lf\n", largePackage2);
+	//This will get the value for large packages 
+
+	printf("Please input a cost for a small package less than 500:\n");
+	scanf_s("%lf", &smallPackage);
+	printf("You entered: %lf\n", smallPackage);
+	printf("Please input a cost for a second small package less than 500:\n");
+	scanf_s("%lf", &smallPackage2);
+	printf("You entered: %lf\n", smallPackage2);
+	//This will get the value for small packages 
+
+	while (invitations >= 200) {
+		invitations -= 200;
+		lgresult += 1;
+	}
+	while (invitations > 0) {
+		invitations -= 50;
+		smresult += 1;
+	}
+	if (largePackage < largePackage2) {
+		cost1 = lgresult * largePackage;
+		printf("We will be using the first large package supplier\n");
+	}
+	else if (largePackage2 < largePackage) {
+		cost1 = lgresult * largePackage2;
+		printf("We will be using the second large package supplier\n");
+	}
+	if (smallPackage < smallPackage2) {
+		cost2 = smresult * smallPackage;
+		printf("We will be using the first small package supplier\n");
+	}
+	else if (smallPackage2 < smallPackage) {
+		cost2 = smresult * smallPackage2;
+		printf("We will be using the second small package supplier\n");
+	}
+	total = cost1 + cost2;
+	printf("You should order %lf sets of small packages\n", smresult);
+	printf("You should order %lf sets of large packages\n", lgresult);
+	printf("Your cost for ordering these packages will be %lf\n", total);
+
+	system("pause");
+}
